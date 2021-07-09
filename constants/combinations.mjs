@@ -2,7 +2,7 @@
 
 //store all combinations, determine which category the players hand fits into, determine who has the highest ranking hand
 
-const COMBINATION_HANDS = [
+export const combinations = [
   {
     rank: 1,
     title: "High card",
