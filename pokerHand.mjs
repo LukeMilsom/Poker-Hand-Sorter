@@ -21,41 +21,31 @@ JS 5D QC 5H 5S 2S 8C JC KC KH
 2D 3H TC 8C QS 6C KS 2S AD 4C
 QS 7H 4H AH JS 3H JH AD 8D 3C`;
 
-const calculateWinner = (playerOne, playerTwo) => {
-  switch (checkForCombination(playerOne, playerTwo)) {
-    case 0:
-      console.log("0");
-      break;
-    case 1:
-      console.log("1");
-      break;
-    case 2:
-      console.log("2");
-      break;
-    case 3:
-      console.log("3");
-      break;
-    case 4:
-      console.log("4");
-      break;
-    case 5:
-      console.log("5");
-      break;
-    case 6:
-      console.log("6");
-  }
-};
-
 const dataSet = lukeTest.split(newLine);
 const cleanData = dataSet.filter((item) => item !== "");
 
+const calculateWinner = (playerOne, playerTwo) => {
+  let playerOneScore;
+  let playerTwoScore;
+
+  combinations.forEach((item) => {
+    if (playerOne.includes(item.combination)) {
+      playerOneScore = item.rank;
+    }
+    if (playerTwo.includes(item.combination)) {
+      playerTwoScore = item.rank;
+    }
+  });
+
+  console.log(
+    `Player One Score: ${playerOneScore}, Player Two Score: ${playerTwoScore}`
+  );
+};
+
 cleanData.forEach((item) => {
   const cardsInAGame = item.split(" ");
-
   const playerOne = cardsInAGame.splice(0, 5);
   const playerTwo = cardsInAGame.splice(0, cardsInAGame.length);
 
-  calculateWinner(4, 6);
+  calculateWinner("123", "789");
 });
-
-checkForCombination();
