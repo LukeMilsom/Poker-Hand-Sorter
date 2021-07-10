@@ -1,10 +1,11 @@
 import { combinations } from "./constants/combinations.mjs";
-import { checkForCombination } from "./utilities/checkForCombination.mjs";
+import { combinationChecker } from "./utils/checkForCombination.mjs";
+import { formatScore } from "./utils/formatScore";
 
 const newLine = "\n";
 
 const lukeTest = `
-9C 9D 8D 7C 3C 2S KD TH 9H 8H
+9C 9D 9D 9C 9C 2S KD TH 9H 8H
 6C 5H AS 4H 7S 2S KD 7H 2C AC
 5H JS AD 8H TC KS QC 9C 5D 6H
 6C 8S 3S TS 4S AH 6S KS 8D 5D
@@ -21,6 +22,11 @@ JS 5D QC 5H 5S 2S 8C JC KC KH
 2D 3H TC 8C QS 6C KS 2S AD 4C
 QS 7H 4H AH JS 3H JH AD 8D 3C`;
 
+//need to check if arrays include a combination...
+
+//if it is a match return rank from switch
+// switch === item.rank
+
 const dataSet = lukeTest.split(newLine);
 const cleanData = dataSet.filter((item) => item !== "");
 
@@ -28,18 +34,7 @@ const calculateWinner = (playerOne, playerTwo) => {
   let playerOneScore;
   let playerTwoScore;
 
-  combinations.forEach((item) => {
-    if (playerOne.includes(item.combination)) {
-      playerOneScore = item.rank;
-    }
-    if (playerTwo.includes(item.combination)) {
-      playerTwoScore = item.rank;
-    }
-  });
-
-  console.log(
-    `Player One Score: ${playerOneScore}, Player Two Score: ${playerTwoScore}`
-  );
+  console.log(formatScore(combinationChecker(playerOne, playerTwo)));
 };
 
 cleanData.forEach((item) => {
