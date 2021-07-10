@@ -1,6 +1,5 @@
 import { combinations } from "./constants/combinations.mjs";
-import { combinationChecker } from "./utils/checkForCombination.mjs";
-import { formatScore } from "./utils/formatScore";
+import { combinationChecker, formatScore } from "./utils/index.mjs";
 
 const newLine = "\n";
 
@@ -22,25 +21,20 @@ JS 5D QC 5H 5S 2S 8C JC KC KH
 2D 3H TC 8C QS 6C KS 2S AD 4C
 QS 7H 4H AH JS 3H JH AD 8D 3C`;
 
-//need to check if arrays include a combination...
-
-//if it is a match return rank from switch
-// switch === item.rank
-
 const dataSet = lukeTest.split(newLine);
 const cleanData = dataSet.filter((item) => item !== "");
 
-const calculateWinner = (playerOne, playerTwo) => {
-  let playerOneScore;
-  let playerTwoScore;
+const calculateWinner = (playerOneHand, playerTwoHand) => {
+  const playerOneScore = combinationChecker(playerOneHand);
+  const playerTwoScore = combinationChecker(playerTwoHand);
 
-  console.log(formatScore(combinationChecker(playerOne, playerTwo)));
+  const winner = formatScore(playerOneScore, playerTwoScore);
 };
 
 cleanData.forEach((item) => {
   const cardsInAGame = item.split(" ");
-  const playerOne = cardsInAGame.splice(0, 5);
-  const playerTwo = cardsInAGame.splice(0, cardsInAGame.length);
+  const playerOneHand = cardsInAGame.splice(0, 5);
+  const playerTwoHand = cardsInAGame.splice(0, cardsInAGame.length);
 
-  calculateWinner("123", "789");
+  calculateWinner(playerOneHand, playerTwoHand);
 });
