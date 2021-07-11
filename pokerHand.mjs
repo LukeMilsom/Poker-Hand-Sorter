@@ -1,10 +1,9 @@
-import { ROYAL_NUMBERS } from "./constants/combinations.mjs";
 import { combinationChecker, formatScore } from "./utils/index.mjs";
 
 const newLine = "\n";
 
 const lukeTest = `
-TC AC JC QC KC 2S KD TH 9H 8H
+2D 3D 4D 5D 6D 2S KD TH 9H 8H
 `;
 
 const dataSet = lukeTest.split(newLine);

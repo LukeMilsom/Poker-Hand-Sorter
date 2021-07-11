@@ -1,27 +1,45 @@
-import { isRoyalFlush, isStraightFlush } from "./combinations/index.mjs";
+import {
+  isFourOfAKind,
+  isFullHouse,
+  isRoyalFlush,
+  isStraightFlush,
+  isFlush,
+  isStraight,
+} from "./combinations/index.mjs";
+
+import {
+  checkIfConsecutiveCards,
+  sortByCardNumber,
+} from "./commonUtilities.mjs";
+import { ALL_NUMBERS_IN_ORDER_OF_VALUE } from "../constants/combinations.mjs";
 
 export const combinationChecker = (playerHand) => {
   //definite one loop in refactor
-  const cardNumber = playerHand.map((item) => {
+  const cardNumbers = playerHand.map((item) => {
     const numberAndSuit = item.split("");
     return numberAndSuit[0];
   });
 
-  const cardSuit = playerHand.map((item) => {
+  const cardSuits = playerHand.map((item) => {
     const numberAndSuit = item.split("");
     return numberAndSuit[1];
   });
 
-  //move these to new file
+  //console.log(isRoyalFlush(cardNumbers, cardSuits) + "isRoyalFlush");
+  //console.log(isStraightFlush(cardNumbers, cardSuits) + "isStraightFlush");
+  //console.log(isFourOfAKind(cardNumbers, cardSuits) + "isFourOfAKind");
+  //console.log(isFullHouse(cardNumbers) + "isFullHouse");
+  //console.log(isFlush(cardSuits) + "isFLush");
+  //console.log(isStraight(cardNumbers) + "isStraight");
 
-  console.log(isRoyalFlush(cardNumber, cardSuit) + "isRoyalFlush");
-  console.log(isStraightFlush(cardNumber, cardSuit) + "isStraightFlush");
+  //Three cards of the same value
+  const threeOfAKind = () => {};
 
   //switch (playerHand) {
-  //  case isRoyalFlush(cardNumber, cardSuit):
+  //  case isRoyalFlush(cardNumbers, cardSuits):
   //    //return value
   //    break;
-  //  case isStraightFlush(cardNumber, cardSuit):
+  //  case isStraightFlush(cardNumbers, cardSuits):
   //    //return value
   //    break;
   //  case isFourOfAKind:
