@@ -1,8 +1,4 @@
-import {
-  ROYAL_NUMBERS,
-  ALL_NUMBERS_IN_ORDER_OF_VALUE,
-} from "../constants/combinations.mjs";
-import { suitMatch, sortByCardNumber } from "./commonUtilities.mjs";
+import { isRoyalFlush, isStraightFlush } from "./combinations/index.mjs";
 
 export const combinationChecker = (playerHand) => {
   //definite one loop in refactor
@@ -17,32 +13,6 @@ export const combinationChecker = (playerHand) => {
   });
 
   //move these to new file
-
-  const isRoyalFlush = (cardNumber, cardSuit) => {
-    const royalNumberMatch = cardNumber.every((elem) =>
-      ROYAL_NUMBERS.includes(elem)
-    );
-    return royalNumberMatch && suitMatch(cardSuit);
-  };
-
-  const isStraightFlush = (cardNumber, cardSuit) => {
-    const sortedCardReference = ALL_NUMBERS_IN_ORDER_OF_VALUE;
-
-    const sortedCards = sortByCardNumber(cardNumber, sortedCardReference);
-    const indexOfFirstNumber = sortedCardReference.indexOf(sortedCards[0]);
-    const checkToIndex = indexOfFirstNumber + 5;
-
-    const checkTheseNumbers = sortedCardReference.slice(
-      indexOfFirstNumber,
-      checkToIndex
-    );
-
-    const consecutiveNumberMatch = cardNumber.every((elem) =>
-      checkTheseNumbers.includes(elem)
-    );
-
-    return consecutiveNumberMatch && suitMatch(cardSuit);
-  };
 
   console.log(isRoyalFlush(cardNumber, cardSuit) + "isRoyalFlush");
   console.log(isStraightFlush(cardNumber, cardSuit) + "isStraightFlush");
