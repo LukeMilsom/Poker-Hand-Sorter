@@ -3,7 +3,7 @@ import { combinationChecker, formatScore } from "./utils/index.mjs";
 const newLine = "\n";
 
 const lukeTest = `
-2D 3D 4D 5D 6D 2S KD TH 9H 8H
+TD QD JD KD AD 2H 4D 5H 6H QH
 `;
 
 const dataSet = lukeTest.split(newLine);
@@ -11,7 +11,10 @@ const cleanData = dataSet.filter((item) => item !== "");
 
 const calculateWinner = (playerOneHand, playerTwoHand) => {
   const playerOneScore = combinationChecker(playerOneHand);
-  //const playerTwoScore = combinationChecker(playerTwoHand);
+  const playerTwoScore = combinationChecker(playerTwoHand);
+
+  console.log({ playerOneScore });
+  console.log({ playerTwoScore });
 
   //isTieBreaker(playerOneHand, playerTwoHand);
 

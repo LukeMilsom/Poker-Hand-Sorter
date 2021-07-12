@@ -1,3 +1,5 @@
+import { ALL_NUMBERS_IN_ORDER_OF_VALUE } from "../constants/combinations.mjs";
+
 //---Check if all suits in a hand match---
 export const suitMatch = (cardSuit) => {
   return cardSuit.every((suit) => suit === cardSuit[0]);
@@ -14,7 +16,7 @@ export const sortByCardNumber = (cards, sortBy) => {
   return itemsOrdered;
 };
 
-//check if all 5 cards are in consecutive order---
+//--Check if all 5 cards are in consecutive order---
 export const checkIfConsecutiveCards = (
   cardNumbers,
   sortedCards,
@@ -35,7 +37,12 @@ export const checkIfConsecutiveCards = (
   );
 };
 
-//check if there 2 or more matching card numbers in hand
+//--Check if there is X or more matching card numbers in hand---
 export const isMatchingCardNumbers = (arr, matchAmount, matchCheck) => {
   return arr.filter((item) => item === matchCheck).length >= matchAmount;
+};
+
+//Check for pairs in a hand(Return array of pairs in a hand)
+export const checkForPairs = (arr) => {
+  return arr.filter((item, index) => arr.indexOf(item) !== index);
 };

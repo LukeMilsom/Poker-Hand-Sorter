@@ -4,6 +4,9 @@ import { isStraightFlush } from "./isStraightFlush.mjs";
 import { isFullHouse } from "./isFullHouse.mjs";
 import { isFlush } from "./isFlush.mjs";
 import { isStraight } from "./isStraight.mjs";
+import { isThreeOfAKind } from "./isThreeOfAKind.mjs";
+import { isPairs } from "./isPairs.mjs";
+import { isHighCard } from "./isHighCard.mjs";
 
 export {
   isFlush,
@@ -12,4 +15,7 @@ export {
   isRoyalFlush,
   isStraightFlush,
   isStraight,
+  isThreeOfAKind,
+  isPairs,
+  isHighCard,
 };
