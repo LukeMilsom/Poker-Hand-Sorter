@@ -10,7 +10,7 @@ import {
   isHighCard,
 } from "./combinations/index.mjs";
 
-export const combinationChecker = (playerHand) => {
+export const tieBreaker = (playerHand) => {
   //definite one loop in refactor
   const cardNumbers = playerHand.map((item) => {
     const numberAndSuit = item.split("");
@@ -22,18 +22,7 @@ export const combinationChecker = (playerHand) => {
     return numberAndSuit[1];
   });
 
-  let rank;
-
-  //console.log(isRoyalFlush(cardNumbers, cardSuits) + "isRoyalFlush");
-  //console.log(isStraightFlush(cardNumbers, cardSuits) + "isStraightFlush");
-  //console.log(isFourOfAKind(cardNumbers, cardSuits) + "isFourOfAKind");
-  //console.log(isFullHouse(cardNumbers) + "isFullHouse");
-  //console.log(isFlush(cardSuits) + "isFLush");
-  //console.log(isStraight(cardNumbers) + "isStraight");
-  //console.log(isThreeOfAKind(cardNumbers) + " is three of a kind");
-  //console.log(isPairs(cardNumbers, 2) + "is two pairs");
-  //console.log(isPairs(cardNumbers, 1) + "is one pair");
-  //console.log(isHighCard(cardNumbers));
+  let winner;
 
   switch (true) {
     case isRoyalFlush(cardNumbers, cardSuits):
