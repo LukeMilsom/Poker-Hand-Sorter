@@ -1,63 +1,68 @@
 import {
-  isFourOfAKind,
-  isFullHouse,
-  isRoyalFlush,
-  isStraightFlush,
-  isFlush,
-  isStraight,
-  isThreeOfAKind,
-  isPairs,
-  isHighCard,
-} from "./combinations/index.mjs";
+  settleStraightFlush,
+  settleFourOfAKind,
+  settleFullHouse,
+  settleFlush,
+  settleStraight,
+  settleThreeOfAKind,
+  settleTwoPairs,
+  settlePair,
+} from "./settle-tie/index.mjs";
 
-export const tieBreaker = (playerHand) => {
-  //definite one loop in refactor
-  const cardNumbers = playerHand.map((item) => {
-    const numberAndSuit = item.split("");
-    return numberAndSuit[0];
-  });
+import {
+  playerHandCardNumbers,
+  playerHandCardSuits,
+} from "./commonUtilities.mjs";
 
-  const cardSuits = playerHand.map((item) => {
-    const numberAndSuit = item.split("");
-    return numberAndSuit[1];
-  });
-
+export const tieBreaker = (playerOneHand, playerTwoHand, rank) => {
   let winner;
 
+  const players = {
+    playerOne: {
+      numbers: playerHandCardNumbers(playerOneHand),
+      suits: playerHandCardSuits(playerOneHand),
+    },
+    playerTwo: {
+      numbers: playerHandCardNumbers(playerTwoHand),
+      suits: playerHandCardSuits(playerTwoHand),
+    },
+  };
+
   switch (true) {
-    case isRoyalFlush(cardNumbers, cardSuits):
-      rank = 10;
+    case rank === 10:
+      winner = false;
+      //this is due to suits not being deciding tie breakers
       break;
-    case isStraightFlush(cardNumbers, cardSuits):
-      rank = 9;
+    case rank === 9:
+      winner = settleStraightFlush(players);
       break;
-    case isFourOfAKind(cardNumbers):
-      rank = 8;
+    case rank === 8:
+      winner = settleFourOfAKind(players);
       break;
-    case isFullHouse(cardNumbers):
-      rank = 7;
+    case rank === 7:
+      winner = settleFullHouse(players);
       break;
-    case isFlush(cardSuits):
-      rank = 6;
+    case rank === 6:
+      winner = settleFlush(players);
       break;
-    case isStraight(cardNumbers):
-      rank = 5;
+    case rank === 5:
+      winner = settleStraight(players);
       break;
-    case isThreeOfAKind(cardNumbers):
-      rank = 4;
+    case rank === 4:
+      winner = settleThreeOfAKind(players);
       break;
-    case isPairs(cardNumbers, 2):
-      rank = 3;
+    case rank === 3:
+      winner = settleTwoPairs(players);
       break;
-    case isPairs(cardNumbers, 1):
-      rank = 2;
+    case rank === 2:
+      winner = settlePair(players);
       break;
-    case isHighCard(cardNumbers):
-      rank = 1;
-      break;
-    default:
-      console.log("you gave me some invalid data");
   }
 
-  return rank;
+  if (winner) {
+    return winner;
+  } else {
+    //return settleHighCard(players);
+    console.log(":(");
+  }
 };
