@@ -1,5 +1,5 @@
 {
-  "name": "Poker_Hands",
+  "name": "Argenti_Code_Challenge",
   "version": "1.0.0",
   "description": "",
   "main": "pokerHand.mjs",
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/LukeMilsom/Poker-Hand-Sorter.git"
   },
   "keywords": [],
-  "author": "Luke Milsom - Front End Developer",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/LukeMilsom/Poker-Hand-Sorter/issues"
