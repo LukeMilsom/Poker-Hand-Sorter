@@ -1,0 +1,23 @@
+{
+  "name": "Poker_Hands",
+  "version": "1.0.0",
+  "description": "",
+  "main": "pokerHand.mjs",
+  "bin": {
+    "run-poker-hands": "./pokerHand.mjs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LukeMilsom/Poker-Hand-Sorter.git"
+  },
+  "keywords": [],
+  "author": "Luke Milsom - Front End Developer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LukeMilsom/Poker-Hand-Sorter/issues"
+  },
+  "homepage": "https://github.com/LukeMilsom/Poker-Hand-Sorter#readme"
+}
