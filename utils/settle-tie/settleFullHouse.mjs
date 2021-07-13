@@ -23,7 +23,6 @@ export const settleFullHouse = (players) => {
       playerTwoHighCard = playerTwoNumbers[i];
     }
   }
-  console.log({ playerOneHighCard, playerTwoHighCard });
 
   if (playerOneHighCard > playerTwoHighCard) {
     return "player_one";
