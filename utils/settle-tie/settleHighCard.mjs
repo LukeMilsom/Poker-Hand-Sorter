@@ -1,4 +1,4 @@
-import { checkForPairs, sortByCardNumber } from "../commonUtilities.mjs";
+import { sortByCardNumber } from "../commonUtilities.mjs";
 import { ALL_NUMBERS_IN_ORDER_OF_VALUE } from "../../constants/combinations.mjs";
 
 export const settleHighCard = (players) => {
@@ -13,8 +13,6 @@ export const settleHighCard = (players) => {
     players.playerTwo.numbers,
     sortedCardReference
   );
-
-  console.log({ settleHighCard: { playerOneSorted, playerTwoSorted } });
 
   for (let i = playerOneSorted.length - 1; i >= 0; i--) {
     if (
