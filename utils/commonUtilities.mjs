@@ -46,3 +46,19 @@ export const isMatchingCardNumbers = (arr, matchAmount, matchCheck) => {
 export const checkForPairs = (arr) => {
   return arr.filter((item, index) => arr.indexOf(item) !== index);
 };
+
+//return the numbers in a player hand
+export const playerHandCardNumbers = (arr) => {
+  return arr.map((item) => {
+    const numberAndSuit = item.split("");
+    return numberAndSuit[0];
+  });
+};
+
+//return the suits in a player hand
+export const playerHandCardSuits = (arr) => {
+  return arr.map((item) => {
+    const numberAndSuit = item.split("");
+    return numberAndSuit[1];
+  });
+};

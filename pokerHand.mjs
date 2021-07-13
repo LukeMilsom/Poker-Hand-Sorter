@@ -524,16 +524,22 @@ const calculateWinner = (playerOneHand, playerTwoHand) => {
   }
 
   if (playerOneScore === playerTwoScore) {
-    //let winner = tieBreaker(playerOneHand, playerTwoHand);
+    tie++;
+    let winner = tieBreaker(playerOneHand, playerTwoHand, playerOneScore);
+
+    console.log({ winner });
+
+    if (winner == "player_one") {
+      playerOne++;
+    }
+    if (winner === "player_two") {
+      playerTwo++;
+    }
   }
 
-  //console.log(
-  //  `Player one score: ${playerOneScore} | Player two score: ${playerTwoScore}`
-  //);
-
-  //isTieBreaker(playerOneHand, playerTwoHand);
-
-  //const winner = formatScore(playerOneScore, playerTwoScore);
+  console.log(
+    `Player one score: ${playerOneScore} | Player two score: ${playerTwoScore}`
+  );
 };
 
 cleanData.forEach((item) => {
@@ -547,3 +553,7 @@ cleanData.forEach((item) => {
 console.log({ playerOne });
 console.log({ playerTwo });
 console.log({ tie });
+
+//const winner = formatScore(playerOneScore, playerTwoScore);
+
+//refactor the suit/number array breaker
