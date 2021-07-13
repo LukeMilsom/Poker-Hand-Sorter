@@ -17,8 +17,6 @@ export const settlePair = (players) => {
     sortedCardReference
   ).slice(-1)[0];
 
-  console.log({ playerOnePair, playerTwoPair });
-
   if (
     sortedCardReference.indexOf(playerOneHighCard) >
     sortedCardReference.indexOf(playerTwoHighCard)
