@@ -9,7 +9,7 @@
 ### Installation -
 
 - Clone this repository
-- In the root directory of the application, add your test file. ensure the file is called: `poker-hands.txt`
+- In the root directory of the application, add your test file. Please make sure you remove the currenr test file (which isbased on the tests from the challenge) ensure the added file is called: `poker-hands.txt`
 - Navigate into the cloned repository
 
 in the terminal run the following commands -
