@@ -62,3 +62,61 @@ export const playerHandCardSuits = (arr) => {
     return numberAndSuit[1];
   });
 };
+
+//_______Tie Breakers__________\\
+export const usePairTieBreaker = (
+  playerOneNumbers,
+  playerTwoNumbers,
+  matchAmount
+) => {
+  let playerOneHighCard;
+  let playerTwoHighCard;
+
+  for (let i = 0; i < playerOneNumbers.length; i++) {
+    if (
+      isMatchingCardNumbers(playerOneNumbers, matchAmount, playerOneNumbers[i])
+    ) {
+      playerOneHighCard = playerOneNumbers[i];
+    }
+    if (
+      isMatchingCardNumbers(playerTwoNumbers, matchAmount, playerTwoNumbers[i])
+    ) {
+      playerTwoHighCard = playerTwoNumbers[i];
+    }
+  }
+  if (playerOneHighCard > playerTwoHighCard) {
+    return "player_one";
+  }
+  if (playerTwoHighCard > playerOneHighCard) {
+    return "player_two";
+  }
+  return false;
+};
+
+//basic sort and settle high card
+export const sortAndSettleHighCard = (playerOne, playerTwo) => {
+  const sortedCardReference = ALL_NUMBERS_IN_ORDER_OF_VALUE;
+
+  const playerOneHighCard = sortByCardNumber(
+    playerOne,
+    sortedCardReference
+  ).slice(-1)[0];
+  const playerTwoHighCard = sortByCardNumber(
+    playerTwo,
+    sortedCardReference
+  ).slice(-1)[0];
+
+  if (
+    sortedCardReference.indexOf(playerOneHighCard) >
+    sortedCardReference.indexOf(playerTwoHighCard)
+  ) {
+    return "player_one";
+  }
+  if (
+    sortedCardReference.indexOf(playerTwoHighCard) >
+    sortedCardReference.indexOf(playerOneHighCard)
+  ) {
+    return "player_two";
+  }
+  return false;
+};

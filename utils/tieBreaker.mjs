@@ -37,11 +37,11 @@ export const tieBreaker = (playerOneHand, playerTwoHand, rank) => {
       //this is due to suits not being deciding tie breakers
       break;
     case rank === 9:
-      winner = settleStraightFlush(players, arrayRef);
+      winner = settleStraightFlush(players);
       break;
     case rank === 8:
       winner = settleFourOfAKind(players);
-
+      console.log({ winner });
       break;
     case rank === 7:
       winner = settleFullHouse(players);
@@ -53,27 +53,21 @@ export const tieBreaker = (playerOneHand, playerTwoHand, rank) => {
       break;
     case rank === 5:
       winner = settleStraight(players);
-
       break;
     case rank === 4:
       winner = settleThreeOfAKind(players);
-
       break;
     case rank === 3:
       winner = settleTwoPairs(players);
-
       break;
     case rank === 2:
       winner = settlePair(players);
-
       break;
   }
 
   if (winner) {
     return winner;
   } else {
-    winner = settleHighCard(players);
-
-    return winner;
+    return settleHighCard(players);
   }
 };

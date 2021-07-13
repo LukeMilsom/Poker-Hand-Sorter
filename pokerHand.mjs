@@ -13,7 +13,6 @@ const newLineRegex = "\n";
 let gameData = fs.readFileSync(__dirname + "/poker-hands.txt").toString();
 
 const dataSet = gameData.split(newLineRegex);
-const cleanData = dataSet.filter((item) => item !== "");
 
 let playerOneWins = 0;
 let playerTwoWins = 0;
@@ -32,17 +31,14 @@ const calculateWinner = (playerOneHand, playerTwoHand) => {
   if (playerOneScore === playerTwoScore) {
     let winner = tieBreaker(playerOneHand, playerTwoHand, playerOneScore);
 
-    if (winner == "player_one") {
-      playerOneWins++;
-    }
-    if (winner === "player_two") {
-      playerTwoWins++;
-    }
+    winner === "player_one" && playerOneWins++;
+    winner === "player_two" && playerTwoWins++;
   }
 };
 
-cleanData.forEach((item) => {
+dataSet.forEach((item) => {
   const cardsInAGame = item.split(" ");
+
   const playerOneHand = cardsInAGame.splice(0, 5);
   const playerTwoHand = cardsInAGame.splice(0, cardsInAGame.length);
 
@@ -57,5 +53,3 @@ fs.writeFileSync(
 console.log(
   `Player 1: ${playerOneWins} hands ${newLineRegex}Player 2: ${playerTwoWins} hands`
 );
-
-//refactor the suit/number array breaker
