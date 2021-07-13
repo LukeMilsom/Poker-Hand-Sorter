@@ -1,9 +1,16 @@
-import { combinationChecker, formatScore, tieBreaker } from "./utils/index.mjs";
+#!/usr/bin/env node
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+import { combinationChecker, tieBreaker } from "./utils/index.mjs";
 import fs from "fs";
+
+//get relative path to text files
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const newLineRegex = "\n";
 
-let gameData = fs.readFileSync("./poker-hands.txt").toString();
+let gameData = fs.readFileSync(__dirname + "/poker-hands.txt").toString();
 
 const dataSet = gameData.split(newLineRegex);
 const cleanData = dataSet.filter((item) => item !== "");
@@ -43,7 +50,7 @@ cleanData.forEach((item) => {
 });
 
 fs.writeFileSync(
-  "./gameResults/game-result.txt",
+  __dirname + "/gameResults/game-result.txt",
   `Player 1: ${playerOneWins} hands ${newLineRegex}Player 2: ${playerTwoWins} hands`
 );
 
